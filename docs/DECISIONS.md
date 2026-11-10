@@ -13,9 +13,9 @@ subdomain of letsauth.eu, a shared repository or data model with letsauth.
 
 ## Stack (10 November 2026)
 
-**Astro and TypeScript for the site and for ingestion,** the same stack as letsauth, so one person
-and their agents can keep both. Pages are static HTML. Rules out: a second toolchain for
-ingestion, a client-side framework for the site.
+**TypeScript for the wire, Astro for the site,** the same stack as letsauth, so one person and
+their agents can keep both. Pages are static HTML. Rules out: a second toolchain for the wire, a
+client-side framework for the site.
 
 ## Hosting and services (10 November 2026)
 
@@ -53,16 +53,26 @@ alphabetical.
 story is a newer record with the same id. The records are published as open data. Rules out: a
 database that overwrites rows, deleting a story to hide it.
 
-## Design tokens come from letsauth (10 November 2026)
+## The wire is the product, the site is one reader of it (10 November 2026)
 
-**`src/styles/tokens.css` holds letsauth's tokens,** so the lab's sites read as one family: cool
-graphite neutrals, a teal accent, Geist and Geist Mono. `pnpm check:tokens` fails when a token
-defined here differs from letsauth's. Rules out: literal colours in components, a second palette.
+**The repository is built around the wire:** the job that fetches, filters, summarises, groups
+and ranks, and the story records it writes. The website is one consumer of those records, beside
+the open data export, the feeds and a later MCP endpoint. The story schema is the contract
+between them. Rules out: logic that lives only in a page template, a site that reads anything
+but the published records.
+
+## Visual design is open (10 November 2026)
+
+**Nothing visual is in the repository until the owner has picked a design.** The direction is
+set: inspired by letsauth.eu, with an animated masthead, a wordmark and an icon of its own. The
+tokens, type and layout are decided on mock-ups first. Rules out: copying letsauth's styles
+ahead of that decision.
 
 ## Budgets are release gates (10 November 2026)
 
-**A page over budget is not published.** `pnpm check:budgets` enforces the byte budgets over the
-built site, compressed with gzip, on every code change and on every scheduled build.
+**A page over budget is not published.** The byte budgets are checked over the built site,
+compressed with gzip, on every code change and on every scheduled build. The check arrives with
+the site.
 
 | Budget                   | Limit           |
 | ------------------------ | --------------- |

@@ -6,7 +6,7 @@
     "useIgnoreFile": true
   },
   "files": {
-    "includes": ["**", "!dist", "!.astro", "!node_modules", "!test-results", "!playwright-report"]
+    "includes": ["**", "!dist", "!node_modules"]
   },
   "formatter": {
     "enabled": true,
@@ -25,18 +25,5 @@
       "quoteStyle": "double",
       "semicolons": "always"
     }
-  },
-  "overrides": [
-    {
-      "includes": ["**/*.astro", "**/*.svelte"],
-      "linter": {
-        "rules": {
-          "correctness": {
-            "noUnusedImports": "off",
-            "noUnusedVariables": "off"
-          }
-        }
-      }
-    }
-  ]
+  }
 }

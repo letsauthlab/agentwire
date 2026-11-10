@@ -2,30 +2,29 @@
 
 ## Goal
 
-The repository can be worked in: it builds, it checks itself with one command, and the rules and
-decisions are written down where a person or an agent finds them.
+The repository can be worked in: the contract between the wire and its readers is written as a
+schema, the sources are data, one command checks everything, and the decisions are written down
+where a person or an agent finds them.
 
 ## In
 
-- The Astro skeleton on letsauth's design tokens, with a placeholder home page and a 404 page.
-- The schemas for a source and a story, and the source list as data, every entry `proposed`.
-- `pnpm check`: data validation, lint, typecheck, unit tests, build, byte budgets.
-- `pnpm check:tokens`: the tokens match letsauth's.
-- CI that runs both.
+- The schemas for a source and a story.
+- The source list as data, every entry `proposed`.
+- `pnpm check`: data validation, lint, typecheck, unit tests.
+- CI that runs it.
 - `CLAUDE.md`, `docs/DECISIONS.md`, `docs/architecture.md`, `docs/roadmap.md`.
 
 ## Out
 
-- Verifying the sources. Each feed is fetched and parsed in a later pull request, which sets the
-  source to `verified`.
-- Any design work: wordmark, icon, masthead and page layouts belong to brief 02.
-- Ingestion, the scheduled job and deployment.
+- The wire itself. Fetching starts with brief 02.
+- Verifying the sources. Each feed is fetched and parsed in brief 02, which sets the source to
+  `verified`.
+- Anything visual. No site, styles or pages until the design is picked.
 
 ## Checks
 
 - `pnpm check` passes locally and in CI.
-- `pnpm check:tokens` passes in CI.
-- The home page renders in light and dark and loads nothing from another host.
+- The repository holds no styles, layouts or pages.
 
 ## Open questions
 
