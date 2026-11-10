@@ -1,0 +1,54 @@
+---
+import "@/styles/global.css";
+// The font every page paints with, preloaded so text does not reflow when it swaps in.
+import fontBody from "@fontsource-variable/geist/files/geist-latin-wght-normal.woff2?url";
+import { LAB, REPO, SITE_NAME, SITE_URL, TAGLINE } from "@/lib/site";
+
+interface Props {
+  title: string;
+  description: string;
+  /** Path for the canonical URL, e.g. "/about/". Defaults to the current path. */
+  path?: string;
+  /** When set, search engines are asked not to index the page. */
+  noindex?: boolean;
+}
+
+const { title, description, path, noindex = false } = Astro.props;
+const site = Astro.site ?? new URL(SITE_URL);
+const canonical = new URL(path ?? Astro.url.pathname, site);
+const fullTitle = title === SITE_NAME ? `${SITE_NAME} · ${TAGLINE}` : `${title} · ${SITE_NAME}`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical.href} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <meta name="color-scheme" content="light dark" />
+    <link rel="preload" href={fontBody} as="font" type="font/woff2" crossorigin />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical.href} />
+    <meta property="og:type" content="website" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="wordmark" href="/">{SITE_NAME}</a>
+      </div>
+    </header>
+    <main id="main">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>A project of the <a href={LAB.url}>{LAB.name}</a>.</p>
+        <p><a href={REPO}>Source on GitHub</a></p>
+      </div>
+    </footer>
+  </body>
+</html>
