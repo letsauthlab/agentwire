@@ -16,6 +16,10 @@ Read first, in this order:
 - `pnpm install`: Node 22, pnpm 10.
 - `pnpm validate:data`: schema, uniqueness and order checks over `data/`. Run after any data
   edit.
+- `pnpm wire:fetch`: runs the fetch stage once against the real sources and prints, per source,
+  what was new, seen, old or failed. It writes to `var/`, which is not in the repository. Add
+  `--verify` to also fetch `proposed` sources that have a fetch target, and `--only <id>` for
+  one source.
 - `pnpm check`: validate:data, lint (Biome), typecheck, unit tests. Must pass before a push.
 - `pnpm lint:fix`: applies Biome's formatting and safe fixes.
 
@@ -35,4 +39,6 @@ Read first, in this order:
 - The visual design is open. Add no styles, layouts or pages until `docs/DECISIONS.md` records
   the picked design.
 - Every stage of the wire is testable on recorded fixtures, without the network or a model.
+- The wire reaches the network only through `src/wire/http/`. Never call `fetch` or `node:https`
+  from an adapter or a later stage.
 - Plain English in every text a reader or contributor sees: short sentences, no marketing words.

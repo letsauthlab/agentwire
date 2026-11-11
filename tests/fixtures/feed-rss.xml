@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>OpenID Foundation</title>
+	<atom:link href="https://openid.net/feed/" rel="self" type="application/rss+xml" />
+	<link>https://openid.net</link>
+	<description>Helping people assert their identity wherever they choose</description>
+	<lastBuildDate>Thu, 05 Nov 2026 11:26:34 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=7.1.4</generator>
+
+<image>
+	<url>https://openid.net/wp-content/uploads/2022/11/favicon_23-150x150.jpg</url>
+	<title>OpenID Foundation</title>
+	<link>https://openid.net</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Closing the assurance gap</title>
+		<link>https://openid.net/closing-the-assurance-gap/</link>
+		
+		<dc:creator><![CDATA[Serj Hallam]]></dc:creator>
+		<pubDate>Thu, 05 Nov 2026 10:31:22 +0000</pubDate>
+				<category><![CDATA[Blogs]]></category>
+		<category><![CDATA[News]]></category>
+		<category><![CDATA[Digital Identity]]></category>
+		<category><![CDATA[eKYC-IDA]]></category>
+		<category><![CDATA[Financial Services]]></category>
+		<category><![CDATA[Fraud Prevention]]></category>
+		<category><![CDATA[Identity Assurance]]></category>
+		<category><![CDATA[know your customer]]></category>
+		<category><![CDATA[Mobile Driver's License (mDL)]]></category>
+		<category><![CDATA[NIST]]></category>
+		<category><![CDATA[Verifiable Credentials]]></category>
+		<guid isPermaLink="false">https://openid.net/?p=76606</guid>
+
+					<description><![CDATA[<p>NIST SP 1800-42A, the OpenID identity proofing extension, and the FinCEN FAQs By Juliana Cafik, Identity Standards &#38; Solutions Architect and independent expert contributing to the OpenID Foundation’s eKYC &#38; IDA Working Group.   On the heels of the National Cybersecurity Center of Excellence Phase 1 results, NIST has published draft SP 1800-42A, a practice guide [&#8230;]</p>
+<p>The post <a href="https://openid.net/closing-the-assurance-gap/">Closing the assurance gap</a> first appeared on <a href="https://openid.net">OpenID Foundation</a>.</p>]]></description>
+										<content:encoded><![CDATA[<p><span style="font-weight: 400;"><img fetchpriority="high" decoding="async" class="aligncenter wp-image-76612 size-large" src="https://openid.net/wp-content/uploads/2026/11/phone-ID-card-icon-digital-ID-verified-shield-2-1024x578.png" alt="" width="800" height="452" srcset="https://openid.net/wp-content/uploads/2026/11/phone-ID-card-icon-digital-ID-verified-shield-2-1024x578.png 1024w, https://openid.net/wp-content/uploads/2026/11/phone-ID-card-icon-digital-ID-verified-shield-2-300x169.png 300w, https://openid.net/wp-content/uploads/2026/11/phone-ID-card-icon-digital-ID-verified-shield-2-768x434.png 768w, https://openid.net/wp-content/uploads/2026/11/phone-ID-card-icon-digital-ID-verified-shield-2-1536x867.png 1536w, https://openid.net/wp-content/uploads/2026/11/phone-ID-card-icon-digital-ID-verified-shield-2-2048x1157.png 2048w" sizes="(max-width: 800px) 100vw, 800px" />On the heels of the National Cybersecurity Center of Excellence Phase 1 results, NIST has published draft </span><a href="https://csrc.nist.gov/pubs/sp/1800/42/ipd"><span style="font-weight: 400;">SP 1800-42A</span></a><span style="font-weight: 400;">, a practice guide that documents a tested architecture for accepting mobile driver’s licenses when opening a financial account.</span> <span style="font-weight: 400;">The OpenID Foundation’s eKYC &amp; IDA Working Group is specifying an </span><a href="https://openid.net/specs/openid-ida-identity-proofing-extension-1_0.html"><span style="font-weight: 400;">identity proofing extension</span></a><span style="font-weight: 400;"> that informs relying parties, such as financial institutions, </span><span style="font-weight: 400;">how a person’s identity was proofed, and to what assurance level, before a credential was issued.</span> <span style="font-weight: 400;">On 8 September 2026, FinCEN, the Federal Reserve, FDIC, NCUA, and OCC published </span><a href="https://www.fincen.gov/system/files/2026-09/MDL-VDC-FAQs.pdf"><span style="font-weight: 400;">FAQs</span></a><span style="font-weight: 400;"> confirming that a government-issued verifiable digital credential may qualify as documentary identification under the Customer Identification Program rule.</span></p>
+<p><span style="font-weight: 400;">Read together, they are an implementation path: a reference architecture, a way to express the assurance behind the credential, and a compliance position for using it. None of the three is enough on its own. The architecture does not say how the holder was proofed. The proofing claims do not, by themselves, satisfy the CIP rule. The FAQs do not tell an institution how to verify an issuer, or which protocol to present over.</span></p>
+<p><span style="font-weight: 400;">That is the gap the OpenID Foundation took to the </span><a href="https://globaldigitalcollaboration.org/"><span style="font-weight: 400;">Global Digital Collaboration conference</span></a><span style="font-weight: 400;"> in Geneva, 1–3 September 2026. </span><span style="font-weight: 400;">In the session </span><i><span style="font-weight: 400;">Closing the Assurance Gap: Securing Financial Account Opening with Verifiable Digital Credentials</span></i><span style="font-weight: 400;">, OpenID Foundation Liaison Juliana Cafik presented alongside Ryan Galluzzo (NIST), Loffie Jordaan (AAMVA), and Mark Verstege (Austroads).</span><span style="font-weight: 400;"> The panel was built around the dependency those three developments expose: credentials have to be issued, proofing rigor has to be expressed, and the result has to map to a financial institution’s regulatory obligations. Remove any one and the chain stops short of meeting financial institution requirements.</span></p>]]></content:encoded>
+					
+		
+		
+			</item>
+	<item>
+		<title>Defakto joins the OIDF as a Sustaining Corporate Member</title>
+		<link>https://openid.net/defakto-joins-the-oidf-as-a-sustaining-corporate-member/</link>
+		
+		<dc:creator><![CDATA[Stephanie Meli]]></dc:creator>
+		<pubDate>Tue, 20 Oct 2026 15:00:25 +0000</pubDate>
+				<category><![CDATA[Blogs]]></category>
+		<category><![CDATA[News]]></category>
+		<category><![CDATA[Compliance]]></category>
+		<category><![CDATA[cryptographically verifiable identities]]></category>
+		<category><![CDATA[large-scale identity deployments]]></category>
+		<category><![CDATA[open industry standards]]></category>
+		<category><![CDATA[Regional Interoperability]]></category>
+		<category><![CDATA[sustaining corporate member]]></category>
+		<category><![CDATA[WISE]]></category>
+		<guid isPermaLink="false">https://openid.net/?p=75943</guid>
+
+					<description><![CDATA[<p>&#160; &#160; &#160; &#160; The OpenID Foundation is pleased to welcome Defakto Security as a new Sustaining Corporate Member. Defakto secures the non-human identities driving the next generation of cloud, automation, and AI. Global enterprises rely on Defakto to eradicate long-lived secrets in favor of short-lived, cryptographically verifiable identities. As cloud, automation and AI deployments [&#8230;]</p>
+<p>The post <a href="https://openid.net/defakto-joins-the-oidf-as-a-sustaining-corporate-member/">Defakto joins the OIDF as a Sustaining Corporate Member</a> first appeared on <a href="https://openid.net">OpenID Foundation</a>.</p>]]></description>
+										<content:encoded><![CDATA[<p><img decoding="async" class="size-medium wp-image-75442 alignleft" src="https://openid.net/wp-content/uploads/2026/10/DefaktoSecurityLogo-300x136.png" alt="" width="300" height="136" srcset="https://openid.net/wp-content/uploads/2026/10/DefaktoSecurityLogo-300x136.png 300w, https://openid.net/wp-content/uploads/2026/10/DefaktoSecurityLogo.png 440w" sizes="(max-width: 300px) 100vw, 300px" /></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>]]></content:encoded>
+					
+		
+		
+			</item>
+</channel>
+</rss>

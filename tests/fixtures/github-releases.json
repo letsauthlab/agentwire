@@ -1,0 +1,38 @@
+[
+  {
+    "url": "https://api.github.com/repos/a2aproject/A2A/releases/330803766",
+    "html_url": "https://github.com/a2aproject/A2A/releases/tag/v1.0.1",
+    "id": 330803766,
+    "tag_name": "v1.0.1",
+    "name": "v1.0.1",
+    "draft": false,
+    "prerelease": false,
+    "created_at": "2026-05-28T11:34:16Z",
+    "published_at": "2026-05-28T11:34:36Z",
+    "body": "## [1.0.1](https://github.com/a2aproject/A2A/compare/v1.0.0...v1.0.1) (2026-05-26)\n\n\n### Bug Fixes\n\n* **spec:** prefer application/a2a+json in HTTP binding ([#1753](https://github.com/a2aproject/A2A/issues/1753)) ([7ff1004](https://github.com/a2aproject/A2A/commit/7ff10041597b9c8a736a477e1890d2c79173bbcf))\n* **spec:** recent transcoding-related error changes ([#1627](https://github.com/a2aproject/A2A/issues/1627)) ([757f0ec](https://github.com/a2aproject/A2A/commit/757f0ec6d067ec071ff915f21ab420200ba1baa3))\n* TaskStatus values in the specification ([#1801](https://github.com/a2aproject/A2A/issues/1801)) ([e997516](https://github.com/a2aproject/A2A/commit/e997516542bd6e3a12ecb6b4939aa0bae3b13a21))"
+  },
+  {
+    "url": "https://api.github.com/repos/a2aproject/A2A/releases/296280427",
+    "html_url": "https://github.com/a2aproject/A2A/releases/tag/v1.0.0",
+    "id": 296280427,
+    "tag_name": "v1.0.0",
+    "name": "v1.0.0",
+    "draft": false,
+    "prerelease": false,
+    "created_at": "2026-03-12T16:34:00Z",
+    "published_at": "2026-03-12T16:34:41Z",
+    "body": "## [1.0.0](https://github.com/a2aproject/A2A/compare/v0.3.0...v1.0.0) (2026-03-12)\n\n\n### \u26a0 BREAKING CHANGES\n\n* **spec:** Combine `TaskPushNotificationConfig` and `PushNotificationConfig` ([#1500](https://github.com/a2aproject/A2A/issues/1500))\n* **spec:** remove duplicated ID from the create task push config request ([#1487](https://github.com/a2aproject/A2A/issues/1487))\n* **spec:** pluralize configs in `ListTaskPushNotificationConfigs` ([#1486](https://github.com/a2aproject/A2A/issues/1486))\n* **spec:** Add LF prefix to the package. ([#1474](https://github.com/a2aproject/A2A/issues/1474))\n* **spec:** Switch to non-complex IDs in requests ([#1389](https://github.com/a2aproject/A2A/issues/1389))\n* **spec:** Standardize spelling of \"canceled\" to use American Spelling throughout ([#1283](https://github.com/a2aproject/A2A/issues/1283))\n* **spec:** Align enum format with ADR-001 ProtoJSON specification ([#1384](https://github.com/a2aproject/A2A/issues/1384))\n* **spec:** Remove redundant `final` field from `TaskStatusUpdateEvent` ([#1308](https://github.com/a2aproject/A2A/issues/1308))\n* **spec:** Move `extendedAgentCard` field to `AgentCapabilities` ([#1307](https://github.com/a2aproject/A2A/issues/1307))\n* **spec:** Fixes for the last_updated_after field ([#1358](https://github.com/a2aproject/A2A/issues/1358))\n* **spec:** modernize oauth 2.0 flows - remove implicit/password, add device code / pkce ([#1303](https://github.com/a2aproject/A2A/issues/1303))\n"
+  },
+  {
+    "url": "https://api.github.com/repos/a2aproject/A2A/releases/236349720",
+    "html_url": "https://github.com/a2aproject/A2A/releases/tag/v0.3.0",
+    "id": 236349720,
+    "tag_name": "v0.3.0",
+    "name": "v0.3.0",
+    "draft": false,
+    "prerelease": true,
+    "created_at": "2025-07-31T15:05:40Z",
+    "published_at": "2025-07-30T17:05:22Z",
+    "body": "## [0.3.0](https://github.com/a2aproject/A2A/compare/v0.2.6...v0.3.0) (2025-07-30)\r\n\r\n\r\n### \u26a0 BREAKING CHANGES\r\n\r\n* Add mTLS to SecuritySchemes, add oauth2 metadata url field, allow Skills to specify Security ([#901](https://github.com/a2aproject/A2A/issues/901))\r\n* Change Well-Known URI for Agent Card hosting from `agent.json` to `agent-card.json` ([#841](https://github.com/a2aproject/A2A/issues/841))\r\n* Add method for fetching extended card ([#929](https://github.com/a2aproject/A2A/issues/929))\r\n\r\n### Features\r\n\r\n* Add `signatures` to the `AgentCard` ([#917](https://github.com/a2aproject/A2A/issues/917)) ([ef4a305](https://github.com/a2aproject/A2A/commit/ef4a30505381e99b20103724cabef024389bacef))\r\n* Add method for fetching extended card ([#929](https://github.com/a2aproject/A2A/issues/929)) ([2cd7d98](https://github.com/a2aproject/A2A/commit/2cd7d98bc8566601b9a18ca8afe92a0b4d203248))\r\n* Add mTLS to SecuritySchemes, add oauth2 metadata url field, allow Skills to specify Security ([#901](https://github.com/a2aproject/A2A/issues/901)) ([e162c0c](https://github.com/a2aproject/A2A/commit/e162c0c6c4f609d2f4eef9042466d176ec75ebda))\r\n\r\n\r\n### Bug Fixes\r\n\r\n* **spec:** Add `SendMessageRequest.request` `json_name` mapping to `message` ([#904](https://github.com/a2aproject/A2A/issues/904)) ([2eef3f6](https://github.com/a2aproject/A2A/commit/2eef3f6113851e690cee70a1b1643e1ffd6d2a60))\r\n"
+  }
+]

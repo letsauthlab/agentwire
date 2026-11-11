@@ -6,7 +6,8 @@ standards bodies, vendors, research labs and open source projects. Each story sh
 summary, a link to the source and the reactions to it.
 
 Agentwire is a project of the [letsauth lab](https://github.com/letsauthlab). It is in
-preparation: this repository holds the foundation, and nothing is live yet.
+preparation: this repository holds the foundation and the part of the wire that fetches the
+sources, and nothing is live yet.
 
 The wire is the product: a scheduled job that turns sources into story records. The website is
 one reader of those records, beside the open data export and the feeds.
@@ -36,6 +37,7 @@ in a pull request. The fields are described in [`src/schema/source.ts`](src/sche
 ```sh
 pnpm install   # Node 22, pnpm 10
 pnpm check     # data validation, lint, typecheck, tests
+pnpm wire:fetch  # fetch the sources once; items and state go to var/
 ```
 
 ## Licences

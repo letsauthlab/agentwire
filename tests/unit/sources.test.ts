@@ -37,6 +37,13 @@ describe("readSources", () => {
     expect(errors.some((e) => e.startsWith("b:"))).toBe(true);
   });
 
+  it("accepts the press kind and rejects an adapter outside the list", () => {
+    const press = entry("a").replace("open-source", "press");
+    expect(readSources(file(press)).errors).toEqual([]);
+    const { errors } = readSources(file(entry("a", "  adapter: lobsters\n")));
+    expect(errors.some((e) => e.startsWith("a: adapter"))).toBe(true);
+  });
+
   it("requires an adapter and a fetch target on a verified source", () => {
     const { errors } = readSources(file(entry("a").replace("proposed", "verified")));
     expect(errors).toEqual(["a: (entry): a verified source needs an adapter and a fetch target"]);

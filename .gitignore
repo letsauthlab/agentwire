@@ -10,3 +10,6 @@ Thumbs.db
 *.swp
 .vscode/
 .idea/
+
+# What the wire writes when it runs here: the state file and the fetched items.
+var/

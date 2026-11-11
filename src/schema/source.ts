@@ -25,6 +25,7 @@ export const SOURCE_KINDS = [
   "research",
   "person",
   "community",
+  "press",
 ] as const;
 
 /**
@@ -35,14 +36,7 @@ export const SOURCE_KINDS = [
 export const SOURCE_TIERS = ["core", "broad", "reactions"] as const;
 
 /** How the job reads a source. Set when the source is verified. */
-export const ADAPTERS = [
-  "feed",
-  "datatracker",
-  "github-releases",
-  "arxiv",
-  "hn-search",
-  "lobsters",
-] as const;
+export const ADAPTERS = ["feed", "datatracker", "github-releases", "arxiv", "hn-search"] as const;
 
 /**
  * `proposed`: named, but the job does not fetch it and its addresses are untested.
