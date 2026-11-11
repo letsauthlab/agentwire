@@ -25,7 +25,7 @@
   name: Aaron Parecki
   url: https://aaronparecki.com/
   kind: person
-  tier: broad
+  tier: reactions
   topics: [standards, authorization]
   status: proposed
   adapter: feed
@@ -176,7 +176,7 @@
   name: Christian Posta
   url: https://blog.christianposta.com/
   kind: person
-  tier: broad
+  tier: reactions
   topics: [agent-protocols, authorization]
   status: proposed
   adapter: feed
@@ -257,7 +257,7 @@
   name: Den Delimarsky
   url: https://den.dev/blog/
   kind: person
-  tier: broad
+  tier: reactions
   topics: [agent-protocols, authorization]
   status: proposed
   adapter: feed
@@ -386,7 +386,7 @@
   name: "Heather Flanagan: Spherical Cow Consulting"
   url: https://sphericalcowconsulting.com/
   kind: person
-  tier: broad
+  tier: reactions
   topics: [standards]
   status: proposed
   adapter: feed
@@ -484,15 +484,6 @@
   adapter: datatracker
   fetch: wimse
 
-# Individual drafts named draft-*-wimse-*. The datatracker adapter needs a name filter before this can be read.
-- id: ietf-wimse-individual
-  name: IETF individual drafts aimed at WIMSE
-  url: https://datatracker.ietf.org/group/wimse/documents/
-  kind: standards-body
-  tier: broad
-  topics: [standards, workload-identity]
-  status: proposed
-
 - id: indykite
   name: IndyKite blog
   url: https://www.indykite.ai/blogs
@@ -517,7 +508,7 @@
   name: Jan Brennenstuhl
   url: https://www.janbrennenstuhl.eu/
   kind: person
-  tier: broad
+  tier: reactions
   topics: [research, standards]
   status: proposed
   adapter: feed
@@ -537,7 +528,7 @@
   name: Karl McGuinness
   url: https://notes.karlmcguinness.com/
   kind: person
-  tier: broad
+  tier: reactions
   topics: [standards, authorization]
   status: proposed
   adapter: feed
@@ -567,7 +558,7 @@
   name: Mark Nottingham
   url: https://www.mnot.net/blog/
   kind: person
-  tier: broad
+  tier: reactions
   topics: [standards]
   status: proposed
   adapter: feed
@@ -627,7 +618,7 @@
   name: "Mike Jones: self-issued"
   url: https://self-issued.info/
   kind: person
-  tier: broad
+  tier: reactions
   topics: [standards]
   status: proposed
   adapter: feed
@@ -637,7 +628,7 @@
   name: Nat Sakimura
   url: https://nat.sakimura.org/
   kind: person
-  tier: broad
+  tier: reactions
   topics: [standards]
   status: proposed
   adapter: feed
@@ -706,7 +697,7 @@
   name: Omri Gazitt
   url: https://notes.ogazitt.com/
   kind: person
-  tier: broad
+  tier: reactions
   topics: [standards, authorization]
   status: proposed
   adapter: feed
@@ -828,7 +819,7 @@
   name: "Phil Windley: Technometria"
   url: https://www.windley.com/
   kind: person
-  tier: broad
+  tier: reactions
   topics: [authorization, standards]
   status: proposed
   adapter: feed

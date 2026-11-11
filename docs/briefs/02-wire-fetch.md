@@ -38,9 +38,11 @@ it has seen, and writes clean items with their text. No model is involved yet.
 - Story records. This stage writes items; stories are formed in brief 03.
 - The scheduled job, object storage and deployment. The state file is local here.
 - Anything visual.
-- An adapter for list pages without a feed, and an adapter for repository commits. The sources
-  that need one stay `proposed` for now.
+- An adapter for list pages without a feed, and an adapter for repository commits. The commits
+  adapter is for a later brief. The sources that need one stay `proposed` for now.
 - Mailing lists. Neither the IETF nor the OpenID list archive has a feed.
+- Individual IETF drafts. The wire reads working group documents only. About 30 active drafts
+  are named `draft-*-wimse-*`; they wait until the relevance check exists.
 
 ## Checks
 
@@ -53,7 +55,7 @@ it has seen, and writes clean items with their text. No model is involved yet.
 ## Findings from the source research (11 November 2026)
 
 Every fetch target in `data/sources.yaml` was requested once by hand on this day, with a client
-that named Agentwire. 90 of the 103 entries have a target that answered with a response that
+that named Agentwire. 90 of the 102 entries have a target that answered with a response that
 parses. The list holds first-level sources only (`docs/DECISIONS.md`).
 
 - **GitHub** forbids `*.atom` and commit pages in its `robots.txt`. The `github-releases` adapter
@@ -71,20 +73,18 @@ parses. The list holds first-level sources only (`docs/DECISIONS.md`).
 - **OpenID.** The working groups have tag feeds on openid.net. Each is a subset of the main feed,
   so the dedupe step must hold across sources.
 - **arXiv.** The saved query returns about 100 papers in 11 days. That is fine for a `broad`
-  source once the relevance check exists, and too many before.
+  source once the relevance check exists, and too many before. The adapter uses the arXiv API at
+  its documented rate of one request every three seconds. `export.arxiv.org/robots.txt` says
+  `Disallow: /`, but the API terms allow this use; the owner decided for the API.
 - **Large responses.** Wiz (719 items), OpenAI (1381) and the IETF blog (602) send the whole
   archive and no `ETag`. The size limit must allow them or they are dropped.
+- **People.** Of the 14 personal blogs, the three by researchers who publish their own findings
+  are `broad` and start stories. The eleven by standards authors and practitioners are
+  `reactions`: the news they write about arrives first-hand from the datatracker or the OpenID
+  feed, and their post attaches to that story.
 - **Blocked.** NCCoE and Strata answer 403 to a client that is not a browser. They stay
   `proposed`. The block is not worked around.
 
 ## Open questions
 
-- **arXiv and robots.txt.** `export.arxiv.org/robots.txt` says `Disallow: /`, while the API terms
-  allow one request every three seconds. Use the API, or read `rss.arxiv.org/rss/cs.CR`, which is
-  allowed but carries all of cs.CR?
-- **Commits.** AuthZEN and the WIMSE drafts move by commits, not releases. Is a commits adapter
-  worth a later brief?
-- **Individual drafts.** 30 active drafts are named `draft-*-wimse-*`. Reading them needs a name
-  filter in the datatracker adapter. In or out?
-- **The list itself.** It is a proposal with 103 entries, 14 of them people. Remove and add
-  entries in this pull request before the merge.
+None. The owner approved the source list on 11 November 2026.

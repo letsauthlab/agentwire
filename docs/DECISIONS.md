@@ -50,8 +50,9 @@ alphabetical.
 ## First-level sources start stories (11 November 2026)
 
 **A story starts only from the source that made the news:** the standards body, the project, the
-company, the public body, or the person who wrote the draft or found the bug. News outlets and
-discussion sites are `reactions` sources. They attach to a story and count for its ranking. The
+company, the public body, or the researcher who found the bug. News outlets, discussion sites
+and the blogs of people who comment on the news, standards authors included, are `reactions`
+sources. They attach to a story and count for its ranking. The
 source list is picked and kept by hand. Rules out: stories that start from a newsletter, an
 aggregator or a news report, and sources added by the job itself.
 
