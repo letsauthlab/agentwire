@@ -47,6 +47,14 @@ story.
 published on the site. Rules out: hand-set source weights, paid placement. Lists of sources are
 alphabetical.
 
+## First-level sources start stories (11 November 2026)
+
+**A story starts only from the source that made the news:** the standards body, the project, the
+company, the public body, or the person who wrote the draft or found the bug. News outlets and
+discussion sites are `reactions` sources. They attach to a story and count for its ranking. The
+source list is picked and kept by hand. Rules out: stories that start from a newsletter, an
+aggregator or a news report, and sources added by the job itself.
+
 ## Story data is append-only (10 November 2026)
 
 **A story record is never edited or removed.** A correction, a new reaction or the hiding of a

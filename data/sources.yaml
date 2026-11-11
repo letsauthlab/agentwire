@@ -1,8 +1,12 @@
 # The sources Agentwire reads. One entry per source, in alphabetical order by id.
 #
-# Every entry here is `proposed`: it names a source and the page a reader opens to see it. The
-# addresses are untested and the job fetches nothing yet. A source becomes `verified` in the pull
-# request that adds its `adapter` and `fetch` target, after the feed was fetched and parsed once.
+# Only first-level sources start a story: the body, project, company or person that made the
+# news (docs/DECISIONS.md). Sources in the `reactions` tier attach to a story and never start one.
+#
+# Every entry here is `proposed`: the job fetches nothing yet. Where an entry has an `adapter` and
+# a `fetch` target, that target answered once by hand on 11 November 2026. A source becomes
+# `verified` in the pull request that fetches and parses it with the real adapter. An entry
+# without a fetch target carries a comment that says why.
 #
 # The schema and the meaning of each field are in src/schema/source.ts. `pnpm validate:data`
 # checks this file. To propose a source, add an entry in a pull request.
@@ -14,14 +18,28 @@
   tier: core
   topics: [agent-protocols]
   status: proposed
+  adapter: github-releases
+  fetch: a2aproject/A2A
+
+- id: aaron-parecki
+  name: Aaron Parecki
+  url: https://aaronparecki.com/
+  kind: person
+  tier: broad
+  topics: [standards, authorization]
+  status: proposed
+  adapter: feed
+  fetch: https://aaronparecki.com/feed.xml
 
 - id: aembit
-  name: Aembit
+  name: Aembit blog
   url: https://aembit.io/blog/
   kind: nhi-vendor
   tier: broad
   topics: [workload-identity, platforms]
   status: proposed
+  adapter: feed
+  fetch: https://aembit.io/feed/
 
 - id: agentgateway
   name: agentgateway
@@ -30,15 +48,40 @@
   tier: core
   topics: [agent-protocols]
   status: proposed
+  adapter: github-releases
+  fetch: agentgateway/agentgateway
 
-- id: agntcy
-  name: AGNTCY
-  url: https://github.com/agntcy
+- id: agntcy-dir
+  name: AGNTCY Agent Directory
+  url: https://github.com/agntcy/dir
   kind: open-source
   tier: core
   topics: [agent-protocols]
   status: proposed
+  adapter: github-releases
+  fetch: agntcy/dir
 
+- id: agntcy-identity
+  name: AGNTCY Identity
+  url: https://github.com/agntcy/identity
+  kind: open-source
+  tier: core
+  topics: [agent-protocols]
+  status: proposed
+  adapter: github-releases
+  fetch: agntcy/identity
+
+- id: agntcy-slim
+  name: AGNTCY SLIM
+  url: https://github.com/agntcy/slim
+  kind: open-source
+  tier: broad
+  topics: [agent-protocols]
+  status: proposed
+  adapter: github-releases
+  fetch: agntcy/slim
+
+# No fetch target: no feed found.
 - id: anthropic
   name: Anthropic
   url: https://www.anthropic.com/news
@@ -47,45 +90,97 @@
   topics: [platforms, research]
   status: proposed
 
+- id: aonan-guan
+  name: Aonan Guan
+  url: https://oddguan.com/blog/
+  kind: person
+  tier: broad
+  topics: [research, incidents]
+  status: proposed
+  adapter: feed
+  fetch: https://oddguan.com/blog/index.xml
+
+- id: arcade
+  name: Arcade blog
+  url: https://www.arcade.dev/blog
+  kind: platform
+  tier: broad
+  topics: [agent-protocols, authorization]
+  status: proposed
+  adapter: feed
+  fetch: https://www.arcade.dev/blog/rss.xml
+
+# A saved query. All of cs.CR is too broad.
 - id: arxiv-cs-cr
-  name: "arXiv, Cryptography and Security"
+  name: "arXiv, Cryptography and Security (agent query)"
   url: https://arxiv.org/list/cs.CR/recent
   kind: research
   tier: broad
   topics: [research]
   status: proposed
-
-- id: astrix
-  name: Astrix Security
-  url: https://astrix.security/learn/blog/
-  kind: nhi-vendor
-  tier: broad
-  topics: [platforms, incidents]
-  status: proposed
+  adapter: arxiv
+  fetch: 'cat:cs.CR AND (abs:"agentic" OR abs:"AI agent" OR abs:"LLM agent" OR abs:"model context protocol" OR abs:"prompt injection" OR abs:"tool poisoning" OR abs:"agent identity")'
 
 - id: auth0
-  name: Auth0
+  name: Auth0 blog
   url: https://auth0.com/blog/
   kind: identity-vendor
   tier: broad
-  topics: [platforms]
+  topics: [platforms, authorization]
   status: proposed
+  adapter: feed
+  fetch: https://auth0.com/blog/rss.xml
 
 - id: aws-security
-  name: AWS Security Blog
+  name: AWS Security blog
   url: https://aws.amazon.com/blogs/security/
   kind: platform
   tier: broad
   topics: [platforms]
   status: proposed
+  adapter: feed
+  fetch: https://aws.amazon.com/blogs/security/feed/
 
+- id: brooks-mcmillin
+  name: Brooks McMillin
+  url: https://brooksmcmillin.com/blog/
+  kind: person
+  tier: broad
+  topics: [research]
+  status: proposed
+  adapter: feed
+  fetch: https://brooksmcmillin.com/rss.xml
+
+# The Cedar blog has no feed, so this reads the releases.
 - id: cedar
   name: Cedar
-  url: https://www.cedarpolicy.com/blog
+  url: https://github.com/cedar-policy/cedar
   kind: open-source
   tier: broad
   topics: [authorization]
   status: proposed
+  adapter: github-releases
+  fetch: cedar-policy/cedar
+
+- id: cerbos
+  name: Cerbos blog
+  url: https://www.cerbos.dev/blog
+  kind: identity-vendor
+  tier: broad
+  topics: [authorization]
+  status: proposed
+  adapter: feed
+  fetch: https://www.cerbos.dev/rss/index.xml
+
+- id: christian-posta
+  name: Christian Posta
+  url: https://blog.christianposta.com/
+  kind: person
+  tier: broad
+  topics: [agent-protocols, authorization]
+  status: proposed
+  adapter: feed
+  fetch: https://blog.christianposta.com/feed
 
 - id: cloud-security-alliance
   name: Cloud Security Alliance
@@ -94,47 +189,110 @@
   tier: broad
   topics: [research, policy]
   status: proposed
+  adapter: feed
+  fetch: https://cloudsecurityalliance.org/feed
 
 - id: cloudflare
-  name: Cloudflare
+  name: Cloudflare blog
   url: https://blog.cloudflare.com/
   kind: platform
   tier: broad
   topics: [platforms, agent-protocols]
   status: proposed
+  adapter: feed
+  fetch: https://blog.cloudflare.com/rss/
+
+- id: cncf
+  name: CNCF
+  url: https://www.cncf.io/blog/
+  kind: community
+  tier: broad
+  topics: [platforms, workload-identity]
+  status: proposed
+  adapter: feed
+  fetch: https://www.cncf.io/blog/feed
 
 - id: cosai
   name: Coalition for Secure AI
   url: https://www.coalitionforsecureai.org/
-  kind: community
+  kind: standards-body
   tier: core
-  topics: [research, standards]
+  topics: [standards]
   status: proposed
+  adapter: feed
+  fetch: https://www.coalitionforsecureai.org/feed/
 
 - id: curity
-  name: Curity
+  name: Curity blog
   url: https://curity.io/blog/
   kind: identity-vendor
   tier: broad
-  topics: [platforms, authorization]
+  topics: [authorization, platforms]
   status: proposed
+  adapter: feed
+  fetch: https://curity.io/blog-feed.xml
 
+# The CyberArk blog now redirects to Palo Alto Networks.
 - id: cyberark
-  name: CyberArk
-  url: https://www.cyberark.com/resources/blog
+  name: Palo Alto Networks identity security blog (was CyberArk)
+  url: https://www.paloaltonetworks.com/blog/identity-security/
   kind: identity-vendor
   tier: broad
   topics: [platforms]
   status: proposed
+  adapter: feed
+  fetch: https://www.paloaltonetworks.com/blog/identity-security/feed/
 
+- id: defakto
+  name: Defakto Security blog
+  url: https://www.defakto.security/blog/
+  kind: nhi-vendor
+  tier: broad
+  topics: [workload-identity, standards]
+  status: proposed
+  adapter: feed
+  fetch: https://www.defakto.security/feed/
+
+- id: den-delimarsky
+  name: Den Delimarsky
+  url: https://den.dev/blog/
+  kind: person
+  tier: broad
+  topics: [agent-protocols, authorization]
+  status: proposed
+  adapter: feed
+  fetch: https://den.dev/blog/index.xml
+
+# No fetch target: no feed found.
 - id: descope
-  name: Descope
+  name: Descope blog
   url: https://www.descope.com/blog
   kind: identity-vendor
   tier: broad
   topics: [platforms]
   status: proposed
 
+- id: dif
+  name: Decentralized Identity Foundation
+  url: https://blog.identity.foundation/
+  kind: standards-body
+  tier: broad
+  topics: [standards]
+  status: proposed
+  adapter: feed
+  fetch: https://blog.identity.foundation/rss/
+
+- id: embrace-the-red
+  name: Embrace The Red (Johann Rehberger)
+  url: https://embracethered.com/blog/
+  kind: person
+  tier: broad
+  topics: [research, incidents]
+  status: proposed
+  adapter: feed
+  fetch: https://embracethered.com/blog/index.xml
+
+# No fetch target: no feed found.
 - id: enisa
   name: ENISA
   url: https://www.enisa.europa.eu/
@@ -143,13 +301,16 @@
   topics: [policy]
   status: proposed
 
+# The feed covers the whole digital strategy site, not only the AI Office.
 - id: eu-ai-office
-  name: European AI Office
+  name: EU digital strategy news (AI Office)
   url: https://digital-strategy.ec.europa.eu/en/policies/ai-office
   kind: public-body
   tier: broad
   topics: [policy]
   status: proposed
+  adapter: feed
+  fetch: https://digital-strategy.ec.europa.eu/rss.xml
 
 - id: fido-alliance
   name: FIDO Alliance
@@ -158,6 +319,18 @@
   tier: broad
   topics: [standards]
   status: proposed
+  adapter: feed
+  fetch: https://fidoalliance.org/feed/
+
+- id: github-blog
+  name: GitHub blog
+  url: https://github.blog/
+  kind: platform
+  tier: broad
+  topics: [platforms]
+  status: proposed
+  adapter: feed
+  fetch: https://github.blog/feed/
 
 - id: google-cloud-security
   name: Google Cloud identity and security blog
@@ -166,14 +339,28 @@
   tier: broad
   topics: [platforms]
   status: proposed
+  adapter: feed
+  fetch: https://cloudblog.withgoogle.com/products/identity-security/rss/
 
 - id: google-deepmind
   name: Google DeepMind
   url: https://deepmind.google/discover/blog/
-  kind: research
+  kind: platform
   tier: broad
   topics: [research]
   status: proposed
+  adapter: feed
+  fetch: https://deepmind.google/blog/feed
+
+- id: google-developers
+  name: Google Developers blog
+  url: https://developers.googleblog.com/
+  kind: platform
+  tier: broad
+  topics: [agent-protocols, platforms]
+  status: proposed
+  adapter: feed
+  fetch: https://developers.googleblog.com/feed
 
 - id: hacker-news
   name: Hacker News
@@ -182,14 +369,69 @@
   tier: reactions
   topics: [research]
   status: proposed
+  adapter: hn-search
+  fetch: https://hn.algolia.com/api/v1/search_by_date
 
 - id: hashicorp
-  name: HashiCorp
+  name: HashiCorp blog
   url: https://www.hashicorp.com/blog
+  kind: platform
+  tier: broad
+  topics: [platforms, workload-identity]
+  status: proposed
+  adapter: feed
+  fetch: https://www.hashicorp.com/blog/feed.xml
+
+- id: heather-flanagan
+  name: "Heather Flanagan: Spherical Cow Consulting"
+  url: https://sphericalcowconsulting.com/
+  kind: person
+  tier: broad
+  topics: [standards]
+  status: proposed
+  adapter: feed
+  fetch: https://sphericalcowconsulting.com/feed/
+
+- id: hush-security
+  name: Hush Security blog
+  url: https://www.hush.security/blog
   kind: nhi-vendor
   tier: broad
-  topics: [workload-identity, platforms]
+  topics: [workload-identity]
   status: proposed
+  adapter: feed
+  fetch: https://www.hush.security/feed/
+
+- id: ietf-agentproto
+  name: IETF Agent Communication Protocols working group
+  url: https://datatracker.ietf.org/group/agentproto/about/
+  kind: standards-body
+  tier: core
+  topics: [standards, agent-protocols]
+  status: proposed
+  adapter: datatracker
+  fetch: agentproto
+
+- id: ietf-blog
+  name: IETF blog
+  url: https://www.ietf.org/blog/
+  kind: standards-body
+  tier: broad
+  topics: [standards]
+  status: proposed
+  adapter: feed
+  fetch: https://www.ietf.org/blog/feed/
+
+# No working group drafts yet (11 November 2026).
+- id: ietf-dawn
+  name: IETF Discovery of Agents With Names working group
+  url: https://datatracker.ietf.org/group/dawn/about/
+  kind: standards-body
+  tier: core
+  topics: [standards, agent-protocols]
+  status: proposed
+  adapter: datatracker
+  fetch: dawn
 
 - id: ietf-oauth
   name: IETF OAuth working group
@@ -198,7 +440,10 @@
   tier: core
   topics: [standards, authorization]
   status: proposed
+  adapter: datatracker
+  fetch: oauth
 
+# No active working group drafts (11 November 2026).
 - id: ietf-scim
   name: IETF SCIM working group
   url: https://datatracker.ietf.org/wg/scim/about/
@@ -206,6 +451,8 @@
   tier: core
   topics: [standards]
   status: proposed
+  adapter: datatracker
+  fetch: scim
 
 - id: ietf-spice
   name: IETF SPICE working group
@@ -214,6 +461,8 @@
   tier: core
   topics: [standards]
   status: proposed
+  adapter: datatracker
+  fetch: spice
 
 - id: ietf-webbotauth
   name: IETF Web Bot Auth working group
@@ -222,6 +471,8 @@
   tier: core
   topics: [standards, agent-protocols]
   status: proposed
+  adapter: datatracker
+  fetch: webbotauth
 
 - id: ietf-wimse
   name: IETF WIMSE working group
@@ -230,38 +481,97 @@
   tier: core
   topics: [standards, workload-identity]
   status: proposed
+  adapter: datatracker
+  fetch: wimse
 
-- id: invariant-labs
-  name: Invariant Labs
-  url: https://invariantlabs.ai/blog
+# Individual drafts named draft-*-wimse-*. The datatracker adapter needs a name filter before this can be read.
+- id: ietf-wimse-individual
+  name: IETF individual drafts aimed at WIMSE
+  url: https://datatracker.ietf.org/group/wimse/documents/
+  kind: standards-body
+  tier: broad
+  topics: [standards, workload-identity]
+  status: proposed
+
+- id: indykite
+  name: IndyKite blog
+  url: https://www.indykite.ai/blogs
+  kind: identity-vendor
+  tier: broad
+  topics: [authorization]
+  status: proposed
+  adapter: feed
+  fetch: https://www.indykite.ai/blogs/rss.xml
+
+- id: intezer-research
+  name: Intezer Research
+  url: https://research.intezer.com/blog/
   kind: research
   tier: broad
   topics: [research, incidents]
   status: proposed
+  adapter: feed
+  fetch: https://research.intezer.com/blog/index.xml
 
 - id: jan-brennenstuhl
   name: Jan Brennenstuhl
   url: https://www.janbrennenstuhl.eu/
   kind: person
   tier: broad
-  topics: [authorization, research]
+  topics: [research, standards]
   status: proposed
+  adapter: feed
+  fetch: https://www.janbrennenstuhl.eu/index.xml
+
+- id: kagent
+  name: kagent
+  url: https://github.com/kagent-dev/kagent
+  kind: open-source
+  tier: broad
+  topics: [agent-protocols, platforms]
+  status: proposed
+  adapter: github-releases
+  fetch: kagent-dev/kagent
+
+- id: karl-mcguinness
+  name: Karl McGuinness
+  url: https://notes.karlmcguinness.com/
+  kind: person
+  tier: broad
+  topics: [standards, authorization]
+  status: proposed
+  adapter: feed
+  fetch: https://notes.karlmcguinness.com/index.xml
 
 - id: keycloak
   name: Keycloak
   url: https://www.keycloak.org/blog
   kind: open-source
   tier: broad
-  topics: [authorization]
+  topics: [platforms, authorization]
   status: proposed
+  adapter: feed
+  fetch: https://www.keycloak.org/rss.xml
 
-- id: lobsters
-  name: Lobsters
-  url: https://lobste.rs/
+- id: linux-foundation
+  name: Linux Foundation
+  url: https://www.linuxfoundation.org/blog
   kind: community
-  tier: reactions
-  topics: [research]
+  tier: broad
+  topics: [agent-protocols]
   status: proposed
+  adapter: feed
+  fetch: https://www.linuxfoundation.org/blog/rss.xml
+
+- id: mark-nottingham
+  name: Mark Nottingham
+  url: https://www.mnot.net/blog/
+  kind: person
+  tier: broad
+  topics: [standards]
+  status: proposed
+  adapter: feed
+  fetch: https://www.mnot.net/blog/index.atom
 
 - id: mcp-blog
   name: Model Context Protocol blog
@@ -270,14 +580,28 @@
   tier: core
   topics: [agent-protocols]
   status: proposed
+  adapter: feed
+  fetch: https://blog.modelcontextprotocol.io/index.xml
+
+- id: mcp-registry
+  name: Model Context Protocol registry
+  url: https://github.com/modelcontextprotocol/registry
+  kind: open-source
+  tier: broad
+  topics: [agent-protocols]
+  status: proposed
+  adapter: github-releases
+  fetch: modelcontextprotocol/registry
 
 - id: mcp-specification
   name: Model Context Protocol specification
   url: https://github.com/modelcontextprotocol/modelcontextprotocol
   kind: open-source
   tier: core
-  topics: [agent-protocols, authorization]
+  topics: [agent-protocols]
   status: proposed
+  adapter: github-releases
+  fetch: modelcontextprotocol/modelcontextprotocol
 
 - id: microsoft-research
   name: Microsoft Research
@@ -286,54 +610,127 @@
   tier: broad
   topics: [research]
   status: proposed
+  adapter: feed
+  fetch: https://www.microsoft.com/en-us/research/feed/
 
 - id: microsoft-security
-  name: Microsoft Security
+  name: Microsoft Security blog
   url: https://www.microsoft.com/en-us/security/blog/
-  kind: identity-vendor
+  kind: platform
   tier: broad
-  topics: [platforms]
+  topics: [platforms, incidents]
   status: proposed
+  adapter: feed
+  fetch: https://www.microsoft.com/en-us/security/blog/feed/
 
+- id: mike-jones
+  name: "Mike Jones: self-issued"
+  url: https://self-issued.info/
+  kind: person
+  tier: broad
+  topics: [standards]
+  status: proposed
+  adapter: feed
+  fetch: "https://self-issued.info/?feed=rss2"
+
+- id: nat-sakimura
+  name: Nat Sakimura
+  url: https://nat.sakimura.org/
+  kind: person
+  tier: broad
+  topics: [standards]
+  status: proposed
+  adapter: feed
+  fetch: https://nat.sakimura.org/feed/
+
+- id: nist-cybersecurity-insights
+  name: NIST Cybersecurity Insights blog
+  url: https://www.nist.gov/blogs/cybersecurity-insights
+  kind: public-body
+  tier: broad
+  topics: [policy]
+  status: proposed
+  adapter: feed
+  fetch: https://www.nist.gov/blogs/cybersecurity-insights/rss.xml
+
+# No fetch target: the site answers 403 to a client that is not a browser.
 - id: nist-nccoe
-  name: NIST National Cybersecurity Center of Excellence
+  name: NIST NCCoE
   url: https://www.nccoe.nist.gov/
   kind: public-body
   tier: broad
   topics: [policy, standards]
   status: proposed
 
+- id: nist-news
+  name: NIST news
+  url: https://www.nist.gov/news-events/news
+  kind: public-body
+  tier: broad
+  topics: [policy, standards]
+  status: proposed
+  adapter: feed
+  fetch: https://www.nist.gov/news-events/news/rss.xml
+
+# No fetch target: no feed found.
 - id: oasis-security
-  name: Oasis Security
+  name: Oasis Security blog
   url: https://www.oasis.security/blog
   kind: nhi-vendor
   tier: broad
-  topics: [platforms, incidents]
+  topics: [workload-identity]
   status: proposed
 
-- id: okta
-  name: Okta
-  url: https://www.okta.com/blog/
+- id: okta-developer
+  name: Okta Developer blog
+  url: https://developer.okta.com/blog/
   kind: identity-vendor
   tier: broad
   topics: [platforms]
   status: proposed
+  adapter: feed
+  fetch: https://developer.okta.com/feed.xml
+
+# Replaces okta: the main Okta blog feed stopped in 2023.
+- id: okta-security
+  name: Okta Security
+  url: https://sec.okta.com/
+  kind: identity-vendor
+  tier: broad
+  topics: [platforms, incidents]
+  status: proposed
+  adapter: feed
+  fetch: https://sec.okta.com/rss.xml
+
+- id: omri-gazitt
+  name: Omri Gazitt
+  url: https://notes.ogazitt.com/
+  kind: person
+  tier: broad
+  topics: [standards, authorization]
+  status: proposed
+  adapter: feed
+  fetch: https://notes.ogazitt.com/rss.xml
 
 - id: onepassword
-  name: "1Password"
+  name: 1Password blog
   url: https://blog.1password.com/
   kind: identity-vendor
   tier: broad
   topics: [platforms]
   status: proposed
+  adapter: feed
+  fetch: https://1password.com/feed
 
 - id: openai
   name: OpenAI
   url: https://openai.com/news/
   kind: platform
   tier: broad
-  topics: [platforms]
+  topics: [platforms, research]
   status: proposed
+  adapter: feed
+  fetch: https://openai.com/blog/rss.xml
 
 - id: openfga
   name: OpenFGA
@@ -342,10 +739,35 @@
   tier: broad
   topics: [authorization]
   status: proposed
+  adapter: feed
+  fetch: https://openfga.dev/blog/rss.xml
 
+# A tag feed: a subset of openid-foundation.
+- id: openid-aiim
+  name: OpenID AI Identity Management community group
+  url: https://openid.net/cg/artificial-intelligence-identity-management-community-group/
+  kind: standards-body
+  tier: core
+  topics: [standards]
+  status: proposed
+  adapter: feed
+  fetch: https://openid.net/tag/aiim/feed/
+
+# A tag feed: a subset of openid-foundation.
 - id: openid-authzen
   name: OpenID AuthZEN working group
   url: https://openid.net/wg/authzen/
+  kind: standards-body
+  tier: core
+  topics: [standards, authorization]
+  status: proposed
+  adapter: feed
+  fetch: https://openid.net/tag/authzen/feed/
+
+# The work shows as commits, not releases. No adapter reads commits yet.
+- id: openid-authzen-spec
+  name: AuthZEN specification repository
+  url: https://github.com/openid/authzen
   kind: standards-body
   tier: core
   topics: [standards, authorization]
@@ -356,9 +778,12 @@
   url: https://openid.net/
   kind: standards-body
   tier: core
-  topics: [standards, authorization]
+  topics: [standards]
   status: proposed
+  adapter: feed
+  fetch: https://openid.net/feed/
 
+# A tag feed: a subset of openid-foundation.
 - id: openid-ipsie
   name: OpenID IPSIE working group
   url: https://openid.net/wg/ipsie/
@@ -366,7 +791,10 @@
   tier: core
   topics: [standards]
   status: proposed
+  adapter: feed
+  fetch: https://openid.net/tag/ipsie/feed/
 
+# A tag feed: a subset of openid-foundation.
 - id: openid-shared-signals
   name: OpenID Shared Signals working group
   url: https://openid.net/wg/sharedsignals/
@@ -374,13 +802,16 @@
   tier: core
   topics: [standards]
   status: proposed
+  adapter: feed
+  fetch: https://openid.net/tag/shared-signals/feed/
 
+# No fetch target: no feed found.
 - id: ory
-  name: Ory
-  url: https://www.ory.sh/blog
-  kind: open-source
+  name: Ory blog
+  url: https://www.ory.com/blog
+  kind: identity-vendor
   tier: broad
-  topics: [authorization]
+  topics: [platforms, authorization]
   status: proposed
 
 - id: owasp-genai
@@ -388,32 +819,89 @@
   url: https://genai.owasp.org/
   kind: community
   tier: core
-  topics: [incidents, research]
+  topics: [research, incidents]
   status: proposed
+  adapter: feed
+  fetch: https://genai.owasp.org/feed/
 
+- id: phil-windley
+  name: "Phil Windley: Technometria"
+  url: https://www.windley.com/
+  kind: person
+  tier: broad
+  topics: [authorization, standards]
+  status: proposed
+  adapter: feed
+  fetch: https://www.windley.com/rss.xml
+
+# No fetch target: the feed stopped in 2024.
 - id: ping-identity
-  name: Ping Identity
+  name: Ping Identity blog
   url: https://www.pingidentity.com/en/resources/blog.html
   kind: identity-vendor
   tier: broad
   topics: [platforms]
   status: proposed
 
+- id: rfc-editor
+  name: "RFC Editor, new RFCs"
+  url: https://www.rfc-editor.org/rfc-index.html
+  kind: standards-body
+  tier: broad
+  topics: [standards]
+  status: proposed
+  adapter: feed
+  fetch: https://www.rfc-editor.org/rfcrss.xml
+
+# No fetch target: no feed found.
 - id: sailpoint
-  name: SailPoint
+  name: SailPoint blog
   url: https://www.sailpoint.com/blog
   kind: identity-vendor
   tier: broad
   topics: [platforms]
   status: proposed
 
-- id: silverfort
-  name: Silverfort
-  url: https://www.silverfort.com/blog/
-  kind: nhi-vendor
+- id: saviynt
+  name: Saviynt blog
+  url: https://saviynt.com/blog
+  kind: identity-vendor
   tier: broad
   topics: [platforms]
   status: proposed
+  adapter: feed
+  fetch: https://saviynt.com/blog/rss.xml
+
+- id: silverfort
+  name: Silverfort blog
+  url: https://www.silverfort.com/blog/
+  kind: identity-vendor
+  tier: broad
+  topics: [platforms]
+  status: proposed
+  adapter: feed
+  fetch: https://www.silverfort.com/feed/
+
+# Replaces invariant-labs, which has no feed of its own.
+- id: snyk
+  name: Snyk blog (holds Invariant Labs)
+  url: https://snyk.io/blog/
+  kind: research
+  tier: broad
+  topics: [research, incidents]
+  status: proposed
+  adapter: feed
+  fetch: https://snyk.io/blog/feed/
+
+- id: solo-io
+  name: Solo.io blog
+  url: https://www.solo.io/blog
+  kind: platform
+  tier: broad
+  topics: [agent-protocols, platforms]
+  status: proposed
+  adapter: feed
+  fetch: https://www.solo.io/blog/rss.xml
 
 - id: spiffe
   name: SPIFFE
@@ -422,6 +910,8 @@
   tier: core
   topics: [workload-identity]
   status: proposed
+  adapter: feed
+  fetch: https://spiffe.io/blog/index.xml
 
 - id: spire
   name: SPIRE
@@ -430,17 +920,31 @@
   tier: core
   topics: [workload-identity]
   status: proposed
+  adapter: github-releases
+  fetch: spiffe/spire
 
+- id: stacklok
+  name: Stacklok blog
+  url: https://stacklok.com/blog
+  kind: platform
+  tier: broad
+  topics: [agent-protocols, platforms]
+  status: proposed
+  adapter: feed
+  fetch: https://stacklok.com/blog/feed
+
+# No fetch target: the site answers 403 to a client that is not a browser.
 - id: strata
-  name: Strata Identity
+  name: Strata blog
   url: https://www.strata.io/blog/
   kind: identity-vendor
   tier: broad
   topics: [platforms]
   status: proposed
 
+# No fetch target: no feed found.
 - id: stytch
-  name: Stytch
+  name: Stytch blog
   url: https://stytch.com/blog
   kind: identity-vendor
   tier: broad
@@ -448,28 +952,54 @@
   status: proposed
 
 - id: teleport
-  name: Teleport
+  name: Teleport blog
   url: https://goteleport.com/blog/
-  kind: nhi-vendor
+  kind: identity-vendor
   tier: broad
-  topics: [workload-identity, platforms]
+  topics: [platforms, workload-identity]
   status: proposed
+  adapter: feed
+  fetch: https://goteleport.com/blog/rss.xml
 
 - id: token-security
-  name: Token Security
+  name: Token Security blog
   url: https://www.token.security/blog
   kind: nhi-vendor
   tier: broad
-  topics: [platforms]
+  topics: [workload-identity]
   status: proposed
+  adapter: feed
+  fetch: https://www.token.security/blog/rss.xml
 
 - id: trail-of-bits
-  name: Trail of Bits
+  name: Trail of Bits blog
   url: https://blog.trailofbits.com/
   kind: research
   tier: broad
   topics: [research, incidents]
   status: proposed
+  adapter: feed
+  fetch: https://blog.trailofbits.com/index.xml
+
+- id: unit42
+  name: Palo Alto Networks Unit 42
+  url: https://unit42.paloaltonetworks.com/
+  kind: research
+  tier: broad
+  topics: [research, incidents]
+  status: proposed
+  adapter: feed
+  fetch: https://unit42.paloaltonetworks.com/feed/
+
+- id: w3c-news
+  name: W3C news
+  url: https://www.w3.org/news/
+  kind: standards-body
+  tier: broad
+  topics: [standards]
+  status: proposed
+  adapter: feed
+  fetch: https://www.w3.org/news/feed/
 
 - id: w3c-vc
   name: W3C Verifiable Credentials working group
@@ -478,11 +1008,34 @@
   tier: core
   topics: [standards]
   status: proposed
+  adapter: feed
+  fetch: https://www.w3.org/groups/wg/vc/feed/
+
+- id: wiz
+  name: Wiz blog
+  url: https://www.wiz.io/blog
+  kind: research
+  tier: broad
+  topics: [research, incidents]
+  status: proposed
+  adapter: feed
+  fetch: https://www.wiz.io/blog/rss.xml
 
 - id: workos
-  name: WorkOS
+  name: WorkOS blog
   url: https://workos.com/blog
   kind: identity-vendor
   tier: broad
   topics: [platforms]
+  status: proposed
+  adapter: feed
+  fetch: https://workos.com/blog/feed
+
+# No fetch target: no feed found.
+- id: zenity-labs
+  name: Zenity Labs
+  url: https://labs.zenity.io/
+  kind: research
+  tier: broad
+  topics: [research, incidents]
   status: proposed
