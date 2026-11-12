@@ -15,7 +15,8 @@ instead of blocking them.
 | D   | **Design**, beside 2 and 3 | Wordmark and icon. Mock-ups of the home page with its animated masthead and of a story page, on real records once step 3 has some. The owner picks; the pick becomes the design system. | Planned |
 | 4   | **Site**                   | Every page type built from the story records in the picked design, inside the speed and accessibility gates. Feeds and the open data export.                                            | Planned |
 | 5   | **Deployment**             | The scheduled job, the storage and pull zones at agentwire.eu, analytics and edge rules. Live but not announced.                                                                        | Planned |
-| 6   | **Soak and launch**        | One week of unattended runs to tune the relevance threshold and the prompts and to check real costs. Then the announcement.                                                             | Planned |
+| 6   | **Tuning harness**         | One command that tries thresholds and prompt versions against the labelled set and real records, and reports what each would change. Limits on the scores, set from real data.          | Planned |
+| 7   | **Soak and launch**        | One week of unattended runs to tune the relevance threshold and the prompts with the harness and to check real costs. Then the announcement.                                            | Planned |
 
 After launch, in order of value: an MCP endpoint over the published records, links to letsauth
 atlas pages where a story is about a specification or server listed there, a weekly digest, and
