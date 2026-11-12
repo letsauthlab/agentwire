@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <generator uri="https://github.com/miniflux/picoFeed">PicoFeed</generator>
+  <title>Articles by Aaron Parecki</title>
+  <id>https://aaronparecki.com/feed.xml</id>
+  <updated>2026-11-11T21:41:23+00:00</updated>
+  <link rel="alternate" type="text/html" href="https://aaronparecki.com/"/>
+  <link rel="self" type="application/atom+xml" href="https://aaronparecki.com/feed.xml"/>
+  <author>
+    <name>Aaron Parecki</name>
+    <uri>https://aaronparecki.com/</uri>
+  </author>
+  <entry>
+    <id>https://aaronparecki.com/2026/10/30/19/oauth-id-jag-draft-06</id>
+    <title>Identity Assertion JWT Authorization Grant Draft 06</title>
+    <link rel="alternate" type="text/html" href="https://aaronparecki.com/2026/10/30/19/oauth-id-jag-draft-06"/>
+    <updated>2026-10-30T17:55:21-07:00</updated>
+    <published>2026-10-30T17:55:21-07:00</published>
+    <author>
+      <name>Aaron Parecki</name>
+      <uri>https://aaronparecki.com/</uri>
+    </author>
+    <summary>We've just published draft -06 of the Identity Assertion JWT Authorization Grant (ID-JAG):</summary>
+    <content type="html"><![CDATA[<p>We've just published draft -06 of the Identity Assertion JWT Authorization Grant (ID-JAG):</p>
+<p><a href="https://datatracker.ietf.org/doc/draft-ietf-oauth-identity-assertion-authz-grant/">https://datatracker.ietf.org/doc/draft-ietf-oauth-identity-assertion-authz-grant/</a></p>
+<p>It's been great to see so many new implementations of ID-JAG over the past few months, across identity providers, authorization servers, clients and libraries. -05 and -06 are mostly about bringing what we've learned from these implementations back into the spec. The diff looks big, but most of it tightens the wording so independent implementations interoperate better. The flow and the overall design haven't changed.</p>]]></content>
+  </entry>
+  <entry>
+    <id>https://aaronparecki.com/2026/10/17/5/rebuilding-my-indieweb-projects</id>
+    <title>Why I'm rebuilding my IndieWeb projects with Claude</title>
+    <link rel="alternate" type="text/html" href="https://aaronparecki.com/2026/10/17/5/rebuilding-my-indieweb-projects"/>
+    <updated>2026-10-17T07:46:17-07:00</updated>
+    <published>2026-10-17T07:46:17-07:00</published>
+    <author>
+      <name>Aaron Parecki</name>
+      <uri>https://aaronparecki.com/</uri>
+    </author>
+    <summary>I recently came across Brennan's post noticing that Claude Code has been showing up in the commit history of a bunch of my IndieWeb projects lately. That's true! I was wondering when someone would notice. I haven't been hiding it, but I also haven't written anything about why I'm doing it, so this seemed like a good time to finally get my thoughts down.</summary>
+    <content type="html"><![CDATA[<p>I recently came across <a href="https://brennan.day/the-indieweb-now-has-genai-and-claude-built-in-what-do-we-do/">Brennan's post</a> noticing that Claude Code has been showing up in the commit history of a bunch of my IndieWeb projects lately. That's true! I was wondering when someone would notice. I haven't been hiding it, but I also haven't written anything about why I'm doing it, so this seemed like a good time to finally get my thoughts down.</p>
+<p><img src="https://aaronparecki.com/2026/09/29/10/photo.jpg"></p>
+<p>Brennan's post summarizes the IndieWeb as:</p>]]></content>
+  </entry>
+</feed>
